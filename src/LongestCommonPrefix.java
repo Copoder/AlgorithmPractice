@@ -19,20 +19,21 @@
  */
 public class LongestCommonPrefix {
     public static void main(String args[]) {
-        System.out.println(longestCommonPrefix(new String[]{"flower","fal","flight"}));
+        System.out.println(longestCommonPrefix(new String[]{}));
     }
 
     //第一次
     public static String longestCommonPrefix(String[] args) {
         StringBuilder sb = new StringBuilder("");
-        int minLength = args[0].length();
+        if(args.length <= 0) return "";
+        int ml = args[0].length();
         for (int i = 0; i < args.length; i++) {
-            if (args[i].length() < minLength) {
-                minLength = args[i].length();
+            if (args[i].length() < ml) {
+                ml = args[i].length();
             }
         }
 
-        for (int i = 0; i < minLength; i++) {
+        for (int i = 0; i < ml; i++) {
             char cur = args[0].charAt(i);
             boolean isBreak = false;
             for (int j = 1; j < args.length; j++) {
