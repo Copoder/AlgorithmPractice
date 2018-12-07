@@ -39,7 +39,7 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
         int[] num = new int[]{1, 1, 1, 2, 3, 3, 3, 4, 5};
-        int len = removeDuplicates(num);
+        int len = removeDuplicates2(num);
         for (int i = 0; i < len; i++) {
             System.out.println(num[i]);
         }
@@ -49,7 +49,7 @@ public class RemoveDuplicates {
     public static int removeDuplicates(int[] nums) {
         int count = nums.length;
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + nums.length-count + 1; j < nums.length; j++) {
+            for (int j = i + nums.length - count + 1; j < nums.length; j++) {
                 if (nums[i] == nums[j]) {
                     count--;
                 } else {
@@ -59,5 +59,18 @@ public class RemoveDuplicates {
             }
         }
         return count;
+    }
+
+    //fixme 别人写的
+    public static int removeDuplicates2(int[] nums) {
+        if (nums.length == 0) return 0;
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i + 1;
     }
 }
